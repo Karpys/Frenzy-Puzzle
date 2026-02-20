@@ -1,0 +1,3 @@
+[submodule "FrenzyPuzzle/Assets/Scripts/KarpysUtils"]
+	path = FrenzyPuzzle/Assets/Scripts/KarpysUtils
+	url = https://github.com/Karpys/KarpysUtils.git
