@@ -55,9 +55,7 @@ Shader "Custom/PuzzlePiece"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                float2 offsetPosition = float2(_Position.x,_Position.y);
-                float2 uv = (IN.uv + offsetPosition) / _Size;
-                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv) * _BaseColor;
+                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
                 return color;
             }
             ENDHLSL

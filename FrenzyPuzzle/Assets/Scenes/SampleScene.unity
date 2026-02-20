@@ -289,6 +289,7 @@ MonoBehaviour:
   m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: 3cfa5ddf47ce9ec4fb8d822e7dbcc357, type: 3}
   m_PlacesHolder: {fileID: 1268841806}
   m_HolderPrefab: {fileID: 828409476264993201, guid: 1e8462555405dea45a1f8ef5914376f7, type: 3}
+  m_InBound: 0
   m_PiecesHolder: {fileID: 2013416676}
   m_MinBound: {fileID: 1577342697}
   m_MaxBound: {fileID: 2111702361}
@@ -307,7 +308,6 @@ Transform:
   m_Children:
   - {fileID: 405806680}
   - {fileID: 1268841806}
-  - {fileID: 2013416676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405806679
@@ -544,10 +544,11 @@ Transform:
   m_GameObject: {fileID: 1268841805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 2013416676}
   m_Father: {fileID: 379565904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577342696
@@ -605,12 +606,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013416675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 379565904}
+  m_Father: {fileID: 1268841806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2111702360
 GameObject:
