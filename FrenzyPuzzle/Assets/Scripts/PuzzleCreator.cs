@@ -5,14 +5,36 @@
     public class PuzzleGenerator
     {
         private Vector2Int m_PuzzleSize = Vector2Int.zero;
+        private int[][][] m_PuzzleData = null;
+        
         public PuzzleGenerator(Vector2Int size)
         {
             m_PuzzleSize = size;
+            m_PuzzleData = new int[size.x][][];
+
+            for (int i = 0; i < m_PuzzleData.Length; i++)
+            {
+                m_PuzzleData[i] = new int[size.y][];
+            }
+
+            for (int i = 0; i < m_PuzzleData.Length; i++)
+            {
+                for (int j = 0; j < m_PuzzleData[i].Length; j++)
+                {
+                    m_PuzzleData[i][j] = new []{1000,-1000,-1000,-1000};
+                }
+            }
         }
 
-        private void Generate()
+        private void GenerateRandomPuzzle()
         {
-            
+            for (int i = 0; i < m_PuzzleData.Length; i++)
+            {
+                for (int j = 0; j < m_PuzzleData[i].Length; j++)
+                {
+                    m_PuzzleData[i][j] = new []{1000,-1000,-1000,-1000};
+                }
+            }
         }
     }
     
