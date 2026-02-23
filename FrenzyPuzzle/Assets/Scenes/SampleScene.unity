@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleCreator
   m_PuzzleSize: {x: 4, y: 4}
-  m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: 3cfa5ddf47ce9ec4fb8d822e7dbcc357, type: 3}
+  m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: c60db304d0e88074eb0810a841587819, type: 3}
   m_PlacesHolder: {fileID: 1268841806}
   m_HolderPrefab: {fileID: 828409476264993201, guid: 1e8462555405dea45a1f8ef5914376f7, type: 3}
   m_InBound: 0

@@ -7,6 +7,7 @@
     {
         [SerializeField] private MeshRenderer m_Renderer = null;
         [SerializeField] private MeshFilter m_MeshFilter = null;
+        public Mesh Mesh => m_MeshFilter.mesh;
 
         public void SetUp(Vector2Int pos,float size)
         {

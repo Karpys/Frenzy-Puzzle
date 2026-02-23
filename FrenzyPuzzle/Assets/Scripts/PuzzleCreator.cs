@@ -2,42 +2,6 @@
 {
     using UnityEngine;
 
-    public class PuzzleGenerator
-    {
-        private Vector2Int m_PuzzleSize = Vector2Int.zero;
-        private int[][][] m_PuzzleData = null;
-        
-        public PuzzleGenerator(Vector2Int size)
-        {
-            m_PuzzleSize = size;
-            m_PuzzleData = new int[size.x][][];
-
-            for (int i = 0; i < m_PuzzleData.Length; i++)
-            {
-                m_PuzzleData[i] = new int[size.y][];
-            }
-
-            for (int i = 0; i < m_PuzzleData.Length; i++)
-            {
-                for (int j = 0; j < m_PuzzleData[i].Length; j++)
-                {
-                    m_PuzzleData[i][j] = new []{1000,-1000,-1000,-1000};
-                }
-            }
-        }
-
-        private void GenerateRandomPuzzle()
-        {
-            for (int i = 0; i < m_PuzzleData.Length; i++)
-            {
-                for (int j = 0; j < m_PuzzleData[i].Length; j++)
-                {
-                    m_PuzzleData[i][j] = new []{1000,-1000,-1000,-1000};
-                }
-            }
-        }
-    }
-    
     public class PuzzleCreator : MonoBehaviour
     {
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
@@ -50,10 +14,12 @@
         [SerializeField] private Transform m_PiecesHolder = null;
         [SerializeField] private Transform m_MinBound = null;
         [SerializeField] private Transform m_MaxBound = null;
-        
+
+        private PuzzleGenerator m_PuzzleGenerator = null;
         private void Awake()
         {
-            CreatePieces();
+            m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
+            CreatePieces(m_PuzzleGenerator.PuzzleData);
             CreateHolders();
         }
 
@@ -69,7 +35,7 @@
             }
         }
 
-        private void CreatePieces()
+        private void CreatePieces(int[][][] puzzleGeneratorPuzzleData)
         {
             for (int x = 0; x < m_PuzzleSize.x; x++)
             {
@@ -82,7 +48,7 @@
                     
                     PuzzlePiece piece = Instantiate(m_PuzzlePiecePrefab, pos, Quaternion.identity, m_PiecesHolder);
                     piece.transform.localPosition = pos;
-                    piece.Initialize(new Vector2Int(x,y),m_PuzzleSize.x);
+                    piece.Initialize(new Vector2Int(x,y),m_PuzzleSize.x,puzzleGeneratorPuzzleData[x][y]);
                 }
             }
         }
