@@ -9,6 +9,7 @@
         [SerializeField] private Transform m_PlacesHolder = null;
         [SerializeField] private Transform m_HolderPrefab = null;
         [SerializeField] private bool m_InBound = true;
+        [SerializeField] private PuzzlePieceSelector m_PuzzlePieceSelector = null;
 
         [Header("Places")]
         [SerializeField] private Transform m_PiecesHolder = null;
@@ -19,7 +20,7 @@
         private void Awake()
         {
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
-            CreatePieces(m_PuzzleGenerator.PuzzleData);
+            CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData);
             CreateHolders();
         }
 
@@ -35,8 +36,10 @@
             }
         }
 
-        private void CreatePieces(int[][][] puzzleGeneratorPuzzleData)
+        private void CreateAndAssignPieces(int[][][] puzzleGeneratorPuzzleData)
         {
+            PuzzlePiece[] pieces = new PuzzlePiece[m_PuzzleSize.x * m_PuzzleSize.y];
+            int count = 0;
             for (int x = 0; x < m_PuzzleSize.x; x++)
             {
                 for (int y = 0; y < m_PuzzleSize.y; y++)
@@ -49,8 +52,17 @@
                     PuzzlePiece piece = Instantiate(m_PuzzlePiecePrefab, pos, Quaternion.identity, m_PiecesHolder);
                     piece.transform.localPosition = pos;
                     piece.Initialize(new Vector2Int(x,y),m_PuzzleSize.x,puzzleGeneratorPuzzleData[x][y]);
+                    pieces[count] = piece;
+                    count++;
                 }
             }
+
+            AssignPiece(pieces);
+        }
+
+        private void AssignPiece(PuzzlePiece[] pieces)
+        {
+            m_PuzzlePieceSelector.Initialize(pieces);
         }
 
         private Vector3 GetBoundPosition()
