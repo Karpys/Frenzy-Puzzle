@@ -1,12 +1,12 @@
 ﻿namespace PuzzleFrenzy.Scripts
 {
-    using System.Collections.Generic;
     using Helpers;
     using KarpysDev.KarpysUtils;
     using UnityEngine;
 
     public class PuzzlePieceSelector : MonoBehaviour
     {
+        [SerializeField] private PuzzlePiecePlacer m_PuzzlePiecePlacer = null;
         [SerializeField] private Camera m_InputCamera = null;
         [SerializeField] private float m_RangeSelect = 1.0f;
         
@@ -34,11 +34,19 @@
 
         private void ReleasePiece()
         {
-            //Todo : ReleaseOnPuzzleFrame / Swap / Release in bound
+            if (m_CurrentSelectedPiece)
+            {
+                TryPlace(m_CurrentSelectedPiece);
+            }
             m_CurrentSelectedPiece = null;
         }
 
-        public void Initialize(PuzzlePiece[] pieces)
+        private void TryPlace(PuzzlePiece currentSelectedPiece)
+        {
+            m_PuzzlePiecePlacer.TryPlace(currentSelectedPiece);
+        }
+
+        public void SetPieces(PuzzlePiece[] pieces)
         {
             m_Pieces = pieces;
         }

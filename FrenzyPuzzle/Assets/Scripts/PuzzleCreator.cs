@@ -7,9 +7,10 @@
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
         [SerializeField] private PuzzlePiece m_PuzzlePiecePrefab = null;
         [SerializeField] private Transform m_PlacesHolder = null;
-        [SerializeField] private Transform m_HolderPrefab = null;
+        [SerializeField] private PuzzlePieceHolder m_HolderPrefab = null;
         [SerializeField] private bool m_InBound = true;
         [SerializeField] private PuzzlePieceSelector m_PuzzlePieceSelector = null;
+        [SerializeField] private PuzzlePieceHolderController m_PuzzlePieceHolderController = null;
 
         [Header("Places")]
         [SerializeField] private Transform m_PiecesHolder = null;
@@ -21,19 +22,32 @@
         {
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
             CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData);
-            CreateHolders();
+            CreateAndAssignHolders();
         }
 
-        private void CreateHolders()
+        private void CreateAndAssignHolders()
         {
+            PuzzlePieceHolder[] holders = new PuzzlePieceHolder[m_PuzzleSize.x * m_PuzzleSize.y];
+
+            int count = 0;
             for (int x = 0; x < m_PuzzleSize.x; x++)
             {
                 for (int y = 0; y < m_PuzzleSize.y; y++)
                 {
-                    Transform holder = Instantiate(m_HolderPrefab, Vector3.zero, Quaternion.identity, m_PlacesHolder);
+                    PuzzlePieceHolder holder = Instantiate(m_HolderPrefab, Vector3.zero, Quaternion.identity, m_PlacesHolder);
                     holder.transform.localPosition = new Vector3(x,0,y);
+                    holder.Initialize(new Vector2Int(x,y));
+                    holders[count] = holder;
+                    count++;
                 }
             }
+
+            AssignHolders(holders);
+        }
+
+        private void AssignHolders(PuzzlePieceHolder[] holders)
+        {
+            m_PuzzlePieceHolderController.SetHolders(holders);
         }
 
         private void CreateAndAssignPieces(int[][][] puzzleGeneratorPuzzleData)
@@ -62,7 +76,7 @@
 
         private void AssignPiece(PuzzlePiece[] pieces)
         {
-            m_PuzzlePieceSelector.Initialize(pieces);
+            m_PuzzlePieceSelector.SetPieces(pieces);
         }
 
         private Vector3 GetBoundPosition()

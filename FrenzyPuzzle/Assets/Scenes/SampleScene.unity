@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b52ca3f82f45e395e3c7b67ec15b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzlePieceSelector
+  m_PuzzlePiecePlacer: {fileID: 379565906}
   m_InputCamera: {fileID: 330585545}
   m_RangeSelect: 1
 --- !u!1 &379565902
@@ -312,6 +313,8 @@ GameObject:
   m_Component:
   - component: {fileID: 379565904}
   - component: {fileID: 379565903}
+  - component: {fileID: 379565905}
+  - component: {fileID: 379565906}
   m_Layer: 0
   m_Name: PuzzleFrame
   m_TagString: Untagged
@@ -334,9 +337,10 @@ MonoBehaviour:
   m_PuzzleSize: {x: 4, y: 4}
   m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: c60db304d0e88074eb0810a841587819, type: 3}
   m_PlacesHolder: {fileID: 1268841806}
-  m_HolderPrefab: {fileID: 828409476264993201, guid: 1e8462555405dea45a1f8ef5914376f7, type: 3}
+  m_HolderPrefab: {fileID: 6962260783692821103, guid: 1e8462555405dea45a1f8ef5914376f7, type: 3}
   m_InBound: 1
   m_PuzzlePieceSelector: {fileID: 362599990}
+  m_PuzzlePieceHolderController: {fileID: 379565905}
   m_PiecesHolder: {fileID: 2013416676}
   m_MinBound: {fileID: 1577342697}
   m_MaxBound: {fileID: 2111702361}
@@ -358,6 +362,32 @@ Transform:
   - {fileID: 2013416676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379565905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379565902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1cf4f285bf4a35b67bb7c7669f36d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzlePieceHolderController
+--- !u!114 &379565906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379565902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d59daf98c4f4228b34f662e67d45d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzlePiecePlacer
+  m_RangePlace: 1
+  m_PuzzlePieceHolderController: {fileID: 379565905}
 --- !u!1 &405806679
 GameObject:
   m_ObjectHideFlags: 0
