@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d28a981f1e493282ae051356dbe913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PieceVisual
+  m_ScaleParent: {fileID: 2017583204184932002}
   m_Renderer: {fileID: 6043784068585368643}
   m_MeshFilter: {fileID: 4752763699496810494}
 --- !u!114 &4750619519259798237

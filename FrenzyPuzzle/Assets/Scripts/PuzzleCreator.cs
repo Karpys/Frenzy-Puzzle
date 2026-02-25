@@ -1,10 +1,13 @@
 ﻿namespace PuzzleFrenzy.Scripts
 {
+    using System;
     using UnityEngine;
+    using Random = UnityEngine.Random;
 
     public class PuzzleCreator : MonoBehaviour
     {
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
+        [SerializeField] private PuzzleFrameResizer puzzleFrameResizer = null;
         [SerializeField] private PuzzlePiece m_PuzzlePiecePrefab = null;
         [SerializeField] private Transform m_PlacesHolder = null;
         [SerializeField] private PuzzlePieceHolder m_HolderPrefab = null;
@@ -13,6 +16,7 @@
         [SerializeField] private PuzzlePieceHolderController m_PuzzlePieceHolderController = null;
 
         [Header("Places")]
+        [SerializeField] private float m_BaseSize = 4;
         [SerializeField] private Transform m_PiecesHolder = null;
         [SerializeField] private Transform m_MinBound = null;
         [SerializeField] private Transform m_MaxBound = null;
@@ -23,6 +27,7 @@
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
             CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData);
             CreateAndAssignHolders();
+            puzzleFrameResizer.Resize(m_BaseSize,m_PuzzleSize);
         }
 
         private void CreateAndAssignHolders()
@@ -54,6 +59,9 @@
         {
             PuzzlePiece[] pieces = new PuzzlePiece[m_PuzzleSize.x * m_PuzzleSize.y];
             int count = 0;
+            
+            float size = m_BaseSize / Math.Max(m_PuzzleSize.x, m_PuzzleSize.y);
+
             for (int x = 0; x < m_PuzzleSize.x; x++)
             {
                 for (int y = 0; y < m_PuzzleSize.y; y++)
@@ -65,7 +73,7 @@
                     
                     PuzzlePiece piece = Instantiate(m_PuzzlePiecePrefab, pos, Quaternion.identity, m_PiecesHolder);
                     piece.transform.localPosition = pos;
-                    piece.Initialize(new Vector2Int(x,y),m_PuzzleSize.x,puzzleGeneratorPuzzleData[x][y]);
+                    piece.Initialize(new Vector2Int(x,y),size,m_PuzzleSize,puzzleGeneratorPuzzleData[x][y]);
                     pieces[count] = piece;
                     count++;
                 }
