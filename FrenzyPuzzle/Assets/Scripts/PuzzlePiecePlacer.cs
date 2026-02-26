@@ -16,7 +16,6 @@
             }
             else
             {
-                currentSelectedPiece.ReleaseToDefaultPosition();
                 currentSelectedPiece.ReleaseHolder();
             }
         }
