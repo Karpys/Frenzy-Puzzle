@@ -1,11 +1,16 @@
 ﻿namespace PuzzleFrenzy.Scripts
 {
     using System;
+    using System.Collections;
+    using System.Net.Http;
+    using Api;
     using UnityEngine;
+    using UnityEngine.Networking;
     using Random = UnityEngine.Random;
 
     public class PuzzleCreator : MonoBehaviour
     {
+        [SerializeField] private string m_Url = String.Empty;
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
         [SerializeField] private PuzzleFrameResizer puzzleFrameResizer = null;
         [SerializeField] private PuzzlePiece m_PuzzlePiecePrefab = null;
@@ -24,8 +29,22 @@
         private PuzzleGenerator m_PuzzleGenerator = null;
         private void Awake()
         {
+            DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
+        }
+
+        private IEnumerator Load()
+        {
+            UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(m_Url);
+            yield return webRequest.SendWebRequest();
+            Texture texture = DownloadHandlerTexture.GetContent(webRequest);
+            CreatePuzzle(texture);
+        }
+
+        private void CreatePuzzle(Texture puzzleSprite)
+        {
+            Debug.Log("Try Create Puzzle");
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
-            CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData);
+            CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData,puzzleSprite);
             CreateAndAssignHolders();
             puzzleFrameResizer.Resize(m_BaseSize,m_PuzzleSize);
         }
@@ -55,7 +74,7 @@
             m_PuzzlePieceHolderController.SetHolders(holders);
         }
 
-        private void CreateAndAssignPieces(int[][][] puzzleGeneratorPuzzleData)
+        private void CreateAndAssignPieces(int[][][] puzzleGeneratorPuzzleData, Texture puzzleSprite)
         {
             PuzzlePiece[] pieces = new PuzzlePiece[m_PuzzleSize.x * m_PuzzleSize.y];
             int count = 0;
@@ -73,7 +92,7 @@
                     
                     PuzzlePiece piece = Instantiate(m_PuzzlePiecePrefab, pos, Quaternion.identity, m_PiecesHolder);
                     piece.transform.localPosition = pos;
-                    piece.Initialize(new Vector2Int(x,y),size,m_PuzzleSize,puzzleGeneratorPuzzleData[x][y]);
+                    piece.Initialize(new Vector2Int(x,y),size,m_PuzzleSize,puzzleGeneratorPuzzleData[x][y],puzzleSprite);
                     pieces[count] = piece;
                     count++;
                 }

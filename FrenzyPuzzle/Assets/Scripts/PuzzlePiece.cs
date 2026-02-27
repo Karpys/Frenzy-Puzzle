@@ -18,12 +18,13 @@ namespace PuzzleFrenzy.Scripts
         public Vector3 Position => transform.position;
         public PuzzlePieceHolder Holder => m_PuzzlePieceHolder;
         
-        public void Initialize(Vector2Int framePlace, float scaleSize, Vector2Int size, int[] deformData)
+        public void Initialize(Vector2Int framePlace, float scaleSize, Vector2Int size, int[] deformData,
+            Texture puzzleTexture)
         {
             m_PuzzleFramePlace = framePlace;
             name = framePlace.ToString();
             m_Deform.ApplyDeform(deformData,m_Visual.Mesh);
-            m_Visual.SetUp(framePlace,size,scaleSize);
+            m_Visual.SetUp(framePlace,size,scaleSize,puzzleTexture);
             m_DefaultPosition = transform.position;
         }
 

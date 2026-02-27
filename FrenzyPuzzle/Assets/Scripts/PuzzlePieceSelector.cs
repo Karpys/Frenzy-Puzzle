@@ -68,7 +68,6 @@
         private void SelectPiece(int id)
         {
             m_CurrentSelectedPiece = m_Pieces[id];
-            m_CurrentSelectedPiece.name.Log("Select");
         }
     }
 }

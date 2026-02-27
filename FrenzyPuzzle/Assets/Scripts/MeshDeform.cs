@@ -16,7 +16,6 @@
         
         public void ApplyDeform(int[] deform, Mesh mesh)
         {
-            mesh.vertices.LogList();
             Vector3[] vertices = mesh.vertices;
             
             for (int i = 0; i < deform.Length; i++)
@@ -71,7 +70,7 @@
                     }
                 }
             }
-            mesh.vertices.LogList();
+            
             mesh.vertices = vertices;
         }
     }
