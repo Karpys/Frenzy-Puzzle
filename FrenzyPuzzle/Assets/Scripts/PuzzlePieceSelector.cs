@@ -27,7 +27,7 @@
             if (m_CurrentSelectedPiece != null)
             {
                 Vector3 inputPosition = m_InputCamera.ScreenToWorldPoint(Input.mousePosition);
-                inputPosition.y = 0;
+                inputPosition.y = 2;
                 m_CurrentSelectedPiece.transform.position = inputPosition;
             }
         }
