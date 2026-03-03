@@ -9,6 +9,10 @@ namespace PuzzleFrenzy.Scripts
     {
         [SerializeField] private PieceVisual m_Visual = null;
         [SerializeField] private MeshDeform m_Deform = null;
+        
+        [Header("Outline")]
+        [SerializeField] private MeshFilter m_OutlineMeshFilter = null;
+        [SerializeField] private MeshDeform m_Outline = null;
 
         private Vector2Int m_PuzzleFramePlace = Vector2Int.zero;
         private Vector2Int m_CurrentPlace = Vector2Int.zero;
@@ -24,6 +28,7 @@ namespace PuzzleFrenzy.Scripts
             m_PuzzleFramePlace = framePlace;
             name = framePlace.ToString();
             m_Deform.ApplyDeform(deformData,m_Visual.Mesh);
+            m_Outline.ApplyDeform(deformData,m_OutlineMeshFilter.mesh);
             m_Visual.SetUp(framePlace,size,scaleSize,puzzleTexture);
             m_DefaultPosition = transform.position;
         }

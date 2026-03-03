@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzlePiece
   m_Visual: {fileID: 3752424366663641804}
+  m_Deform: {fileID: 0}
 --- !u!114 &3752424366663641804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d28a981f1e493282ae051356dbe913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PieceVisual
+  m_ScaleParent: {fileID: 0}
   m_Renderer: {fileID: 6043784068585368643}
   m_MeshFilter: {fileID: 4752763699496810494}
 --- !u!1 &8268929343555169309
