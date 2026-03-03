@@ -16,6 +16,7 @@
 
             float max = Math.Max(puzzleSize.x, puzzleSize.y);
             Vector3 place = m_Place.localPosition.SetX(-max / 2 + 0.5f);
+            place = place.SetZ(-max / 2 + 0.5f);
             m_Place.localPosition = place;
         }
     }
