@@ -29,7 +29,7 @@
         private PuzzleGenerator m_PuzzleGenerator = null;
         private void Awake()
         {
-            DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
+            _ = DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
         }
 
         private IEnumerator Load()

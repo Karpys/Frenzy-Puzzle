@@ -43,6 +43,7 @@
 
         private void TryPlace(PuzzlePiece currentSelectedPiece)
         {
+            m_CurrentSelectedPiece.transform.position = m_CurrentSelectedPiece.transform.position.SetY(0);
             m_PuzzlePiecePlacer.TryPlace(currentSelectedPiece);
         }
 

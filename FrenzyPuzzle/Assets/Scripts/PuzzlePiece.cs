@@ -8,11 +8,11 @@ namespace PuzzleFrenzy.Scripts
     public class PuzzlePiece : MonoBehaviour,IPosition
     {
         [SerializeField] private PieceVisual m_Visual = null;
-        [SerializeField] private MeshDeform m_Deform = null;
+        [SerializeField] private BaseDeform m_Deform = null;
         
         [Header("Outline")]
         [SerializeField] private MeshFilter m_OutlineMeshFilter = null;
-        [SerializeField] private MeshDeform m_Outline = null;
+        [SerializeField] private BaseDeform m_Outline = null;
 
         private Vector2Int m_PuzzleFramePlace = Vector2Int.zero;
         private Vector2Int m_CurrentPlace = Vector2Int.zero;

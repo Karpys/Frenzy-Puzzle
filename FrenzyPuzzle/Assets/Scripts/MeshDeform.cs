@@ -3,7 +3,7 @@
     using KarpysDev.KarpysUtils;
     using UnityEngine;
 
-    public class MeshDeform : MonoBehaviour
+    public class MeshDeform : BaseDeform
     {
         [SerializeField] private float m_Force = 1;
         [SerializeField] private float m_ForceMiddle = 0.5f;
@@ -14,7 +14,7 @@
         private static readonly int[] BOTTOM_VERTICES = { 59, 61, 63, 65, 67};
         private static readonly int[] LEFT_VERTICES = { 11, 28, 32, 36, 40};
         
-        public void ApplyDeform(int[] deform, Mesh mesh)
+        public override void ApplyDeform(int[] deform, Mesh mesh)
         {
             Vector3[] vertices = mesh.vertices;
             
