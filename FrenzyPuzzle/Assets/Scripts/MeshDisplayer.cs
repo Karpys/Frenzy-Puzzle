@@ -7,7 +7,7 @@
     {
         [SerializeField] private MeshFilter m_MeshFilter = null;
         // [SerializeField] private MeshDeform m_MeshDeform = null;
-        [SerializeField] private MeshDeformV2 m_MeshDeformV2 = null;
+        [SerializeField] private BaseDeform m_MeshDeformV2 = null;
         [SerializeField] private TextDisplay m_TextDisplayPrefab = null;
         [SerializeField] private int[] m_Deform = null;
         [SerializeField] private Transform m_TextParent = null;
