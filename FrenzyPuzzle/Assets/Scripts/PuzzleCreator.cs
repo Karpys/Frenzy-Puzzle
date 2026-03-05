@@ -10,6 +10,7 @@
 
     public class PuzzleCreator : MonoBehaviour
     {
+        [SerializeField] private PuzzleController m_PuzzleController = null;
         [SerializeField] private string m_Url = String.Empty;
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
         [SerializeField] private PuzzleFrameResizer puzzleFrameResizer = null;
@@ -27,10 +28,6 @@
         [SerializeField] private Transform m_MaxBound = null;
 
         private PuzzleGenerator m_PuzzleGenerator = null;
-        private void Awake()
-        {
-            _ = DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
-        }
 
         private IEnumerator Load()
         {
@@ -38,6 +35,11 @@
             yield return webRequest.SendWebRequest();
             Texture texture = DownloadHandlerTexture.GetContent(webRequest);
             CreatePuzzle(texture);
+        }
+
+        public void Create()
+        {
+            _ = DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
         }
 
         private void CreatePuzzle(Texture puzzleSprite)
@@ -71,6 +73,7 @@
 
         private void AssignHolders(PuzzlePieceHolder[] holders)
         {
+            m_PuzzleController.AssignHolders(holders);
             m_PuzzlePieceHolderController.SetHolders(holders);
         }
 

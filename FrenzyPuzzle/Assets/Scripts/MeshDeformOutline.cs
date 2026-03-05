@@ -61,7 +61,6 @@
                 float radius = m_StartRadius;
                 float incr = m_TotalRadius / (verticesApply.Length - 1 - verticesRemove *2);
                 
-                verticesApply.Length.Log("Length");
                 for (int j = verticesRemove; j < verticesApply.Length - verticesRemove; j++)
                 {
                     vertices[verticesApply[j]].z += Mathf.Sin(Mathf.Deg2Rad * radius) * m_Radius * zMult + zOffset;

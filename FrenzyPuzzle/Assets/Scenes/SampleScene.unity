@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 379565905}
   - component: {fileID: 379565906}
   - component: {fileID: 379565907}
+  - component: {fileID: 379565908}
   m_Layer: 0
   m_Name: PuzzleFrame
   m_TagString: Untagged
@@ -425,8 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e89cff486604652a9f1d44ad6c98a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleCreator
+  m_PuzzleController: {fileID: 379565908}
   m_Url: https://media.licdn.com/dms/image/v2/D4E03AQG3LTF1v-CvzA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700045112530?e=1773878400&v=beta&t=g_khhQHsJARAVrGwzdDZ1Y08AkE0BFxGe24qAZw02bo
-  m_PuzzleSize: {x: 8, y: 8}
+  m_PuzzleSize: {x: 4, y: 4}
   puzzleFrameResizer: {fileID: 379565907}
   m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: c60db304d0e88074eb0810a841587819, type: 3}
   m_PlacesHolder: {fileID: 1268841806}
@@ -496,6 +498,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleFramePlacer
   m_ParentScale: {fileID: 1656059361}
   m_Place: {fileID: 1268841806}
+--- !u!114 &379565908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379565902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2108a20043241e3bbb41845fdc494b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleController
+  m_PuzzleCreator: {fileID: 379565903}
 --- !u!1 &405806679
 GameObject:
   m_ObjectHideFlags: 0

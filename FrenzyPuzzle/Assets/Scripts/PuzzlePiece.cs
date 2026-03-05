@@ -21,7 +21,8 @@ namespace PuzzleFrenzy.Scripts
 
         public Vector3 Position => transform.position;
         public PuzzlePieceHolder Holder => m_PuzzlePieceHolder;
-        
+        public Vector2Int TargetPosition => m_PuzzleFramePlace;
+
         public void Initialize(Vector2Int framePlace, float scaleSize, Vector2Int size, int[] deformData,
             Texture puzzleTexture)
         {

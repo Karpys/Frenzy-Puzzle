@@ -1,5 +1,6 @@
 ﻿namespace PuzzleFrenzy.Scripts
 {
+    using System;
     using Helpers;
     using UnityEngine;
 
@@ -7,7 +8,12 @@
     {
         [SerializeField] private Vector2Int m_Position = Vector2Int.zero;
         [SerializeField] private PuzzlePiece m_PuzzlePiece = null;
+
+        private bool m_IsValid = false;
+
         public Vector3 Position => transform.position;
+        public bool IsValid => m_IsValid;
+        public Action A_OnPlaceNewPiece = null;
 
         public void Initialize(Vector2Int position)
         {
@@ -49,6 +55,9 @@
             m_PuzzlePiece = puzzlePiece;
             m_PuzzlePiece.transform.position = transform.position;
             puzzlePiece.Place(this,m_Position);
+            m_IsValid = m_PuzzlePiece.TargetPosition == m_Position;
+            
+            A_OnPlaceNewPiece?.Invoke();
         }
 
         public void Clear()
