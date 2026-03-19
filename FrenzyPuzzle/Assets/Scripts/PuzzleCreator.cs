@@ -2,14 +2,13 @@
 {
     using System;
     using System.Collections;
-    using System.Net.Http;
-    using Api;
     using UnityEngine;
     using UnityEngine.Networking;
     using Random = UnityEngine.Random;
 
     public class PuzzleCreator : MonoBehaviour
     {
+        [SerializeField] private TextureProvider m_PuzzleTextureProvider = null;
         [SerializeField] private PuzzleController m_PuzzleController = null;
         [SerializeField] private string m_Url = String.Empty;
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
@@ -39,7 +38,7 @@
 
         public void Create()
         {
-            _ = DailyPuzzleApiRequest.RequestPuzzle(new HttpClient(),CreatePuzzle);
+            m_PuzzleTextureProvider.CreatePuzzle(CreatePuzzle);
         }
 
         private void CreatePuzzle(Texture puzzleSprite)
