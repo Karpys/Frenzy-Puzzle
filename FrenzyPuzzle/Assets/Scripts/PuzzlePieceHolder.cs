@@ -2,6 +2,7 @@
 {
     using System;
     using Helpers;
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
 
     public class PuzzlePieceHolder : MonoBehaviour,IPosition
@@ -53,7 +54,7 @@
         private void Place(PuzzlePiece puzzlePiece)
         {
             m_PuzzlePiece = puzzlePiece;
-            m_PuzzlePiece.transform.position = transform.position;
+            m_PuzzlePiece.transform.DoMove(transform.position, GlobalVariables.PuzzlePiecePlaceSpeed).SetEase(GlobalVariables.PuzzlePiecePlaceEase).SetMode(TweenMode.SPEED);
             puzzlePiece.Place(this,m_Position);
             m_IsValid = m_PuzzlePiece.TargetPosition == m_Position;
             
@@ -63,6 +64,7 @@
         public void Clear()
         {
             m_PuzzlePiece = null;
+            m_IsValid = false;
         }
     }
 }

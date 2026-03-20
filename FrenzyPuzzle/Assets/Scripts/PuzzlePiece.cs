@@ -3,6 +3,7 @@ namespace PuzzleFrenzy.Scripts
 {
     using System;
     using Helpers;
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
 
     public class PuzzlePiece : MonoBehaviour,IPosition
@@ -42,7 +43,7 @@ namespace PuzzleFrenzy.Scripts
 
         public void ReleaseToDefaultPosition()
         {
-            transform.position = m_DefaultPosition;
+            transform.DoMove(m_DefaultPosition, GlobalVariables.PuzzlePiecePlaceSpeed).SetEase(GlobalVariables.PuzzlePiecePlaceEase).SetMode(TweenMode.SPEED);
         }
 
         public void ReleaseHolder()

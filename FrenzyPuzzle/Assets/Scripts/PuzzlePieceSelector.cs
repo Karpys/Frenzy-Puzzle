@@ -2,6 +2,7 @@
 {
     using Helpers;
     using KarpysDev.KarpysUtils;
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
 
     public class PuzzlePieceSelector : MonoBehaviour
@@ -69,6 +70,7 @@
         private void SelectPiece(int id)
         {
             m_CurrentSelectedPiece = m_Pieces[id];
+            m_CurrentSelectedPiece.transform.DoKill();
         }
     }
 }

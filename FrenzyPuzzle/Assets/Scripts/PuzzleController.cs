@@ -8,7 +8,7 @@
         
         private PuzzlePieceHolder[] m_Holders = null;
 
-        private void Awake()
+        private void Start()
         {
             m_PuzzleCreator.Create();
         }

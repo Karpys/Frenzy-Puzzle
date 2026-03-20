@@ -119,6 +119,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39165030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39165032}
+  - component: {fileID: 39165031}
+  - component: {fileID: 39165033}
+  m_Layer: 0
+  m_Name: ===Engiine===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &39165031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39165030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb292f35b7fb94770b9fe33c4ab26161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KarpysUtilsAsmdef::KarpysDev.KarpysUtils.TweenCustom.TweenManager
+--- !u!4 &39165032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39165030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39165033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39165030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7e6a79075b452589fbc2fec3b70477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.GlobalVariableSetter
+  m_PuzzlePiecePlaceSpeed: 4
+  m_PuzzlePiecePlaceEase: 5
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +489,7 @@ MonoBehaviour:
   m_PuzzleTextureProvider: {fileID: 379565909}
   m_PuzzleController: {fileID: 379565908}
   m_Url: https://media.licdn.com/dms/image/v2/D4E03AQG3LTF1v-CvzA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700045112530?e=1773878400&v=beta&t=g_khhQHsJARAVrGwzdDZ1Y08AkE0BFxGe24qAZw02bo
-  m_PuzzleSize: {x: 4, y: 4}
+  m_PuzzleSize: {x: 6, y: 6}
   puzzleFrameResizer: {fileID: 379565907}
   m_PuzzlePiecePrefab: {fileID: 6565334044588889263, guid: c60db304d0e88074eb0810a841587819, type: 3}
   m_PlacesHolder: {fileID: 1268841806}
@@ -525,8 +584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193506aceb28402493a8d6dd9a76b7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.TextureProvider
-  m_Type: 1
-  m_DefaultSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_DefaultSprite: {fileID: 21300000, guid: f3c58c5fc45db364c9b93b003248c4dc, type: 3}
 --- !u!1 &405806679
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,3 +1052,4 @@ SceneRoots:
   - {fileID: 362599989}
   - {fileID: 347826616}
   - {fileID: 900668097}
+  - {fileID: 39165032}
