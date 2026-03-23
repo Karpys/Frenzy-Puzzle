@@ -8,9 +8,9 @@
 
     public static class DailyPuzzleApiRequest
     {
-        public static async Task RequestPuzzle(HttpClient client,Action<Texture> OnPuzzleFound)
+        public static async Task RequestPuzzle(HttpClient client,int puzzleId ,Action<Texture> OnPuzzleFound)
         {
-            string request = "https://dailypuzzleapi.onrender.com/images/PuzzleDemo.png";
+            string request = "https://dailypuzzleapi.onrender.com/images/DailyPuzzle" + puzzleId + ".png";
             HttpResponseMessage response = await client.GetAsync(request);
 
             if (response.IsSuccessStatusCode)

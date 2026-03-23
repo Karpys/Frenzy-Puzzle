@@ -8,7 +8,6 @@
 
     public class PuzzleCreator : MonoBehaviour
     {
-        [SerializeField] private TextureProvider m_PuzzleTextureProvider = null;
         [SerializeField] private PuzzleController m_PuzzleController = null;
         [SerializeField] private string m_Url = String.Empty;
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
@@ -36,11 +35,17 @@
             CreatePuzzle(texture);
         }
 
-        public void Create()
+        public void Create(ITextureProvider textureProvider, Vector2Int puzzleSize)
         {
-            m_PuzzleTextureProvider.CreatePuzzle(CreatePuzzle);
+            m_PuzzleSize = puzzleSize;
+            CreatePuzzleAsync(textureProvider,CreatePuzzle);
         }
 
+        private void CreatePuzzleAsync(ITextureProvider textureProvider, Action<Texture> Result)
+        {
+            textureProvider.GetTexture(Result);
+        }
+        
         private void CreatePuzzle(Texture puzzleSprite)
         {
             Debug.Log("Try Create Puzzle");

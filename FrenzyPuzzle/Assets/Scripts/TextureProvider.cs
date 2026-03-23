@@ -7,7 +7,8 @@ namespace PuzzleFrenzy.Scripts
     {
         [SerializeField] private TextureProviderType m_Type = TextureProviderType.Sprite;
 
-        [Header("Provider Type")] 
+        [Header("Provider Type")]
+        [SerializeField] private int m_PuzzleId = 0;
         [SerializeField] private Sprite m_DefaultSprite = null;
 
         private ITextureProvider m_TextureProvider = null;
@@ -20,7 +21,7 @@ namespace PuzzleFrenzy.Scripts
                     m_TextureProvider = new PuzzleTextureProvider(m_DefaultSprite);
                     break;
                 case TextureProviderType.ServerSide:
-                    m_TextureProvider = new ServeurSideTextureProvider();
+                    m_TextureProvider = new ServeurSideTextureProvider(m_PuzzleId);
                     break;
             }
         }

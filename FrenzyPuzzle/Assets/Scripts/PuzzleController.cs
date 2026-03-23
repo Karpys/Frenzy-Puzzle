@@ -4,14 +4,7 @@
 
     public class PuzzleController : MonoBehaviour
     {
-        [SerializeField] private PuzzleCreator m_PuzzleCreator = null;
-        
         private PuzzlePieceHolder[] m_Holders = null;
-
-        private void Start()
-        {
-            m_PuzzleCreator.Create();
-        }
 
         public void AssignHolders(PuzzlePieceHolder[] holders)
         {
@@ -29,7 +22,7 @@
                 Debug.Log("Win");
         }
         
-        public bool CheckIsValid()
+        private bool CheckIsValid()
         {
             foreach (PuzzlePieceHolder puzzlePieceHolder in m_Holders)
             {
