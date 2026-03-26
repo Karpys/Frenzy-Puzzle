@@ -48,7 +48,6 @@
         
         private void CreatePuzzle(Texture puzzleSprite)
         {
-            Debug.Log("Try Create Puzzle");
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
             CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData,puzzleSprite);
             CreateAndAssignHolders();

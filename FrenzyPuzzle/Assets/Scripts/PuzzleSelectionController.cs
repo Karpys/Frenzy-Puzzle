@@ -4,9 +4,7 @@
 
     public class PuzzleSelectionController : MonoBehaviour
     {
-        [SerializeField] private Transform m_UI = null;
-        [SerializeField] private PuzzleCreator m_PuzzleCreator = null;
-        [SerializeField] private Transform m_PuzzleFrame = null;
+        [SerializeField] private PuzzleCreationTransitionController m_PuzzleCreationTransitionController = null;
 
         public void Load(int puzzleIndex)
         {
@@ -27,9 +25,8 @@
                     break;
             }
 
-            m_PuzzleCreator.Create(textureProvider, puzzleSize);
-            m_UI.gameObject.SetActive(false);
-            m_PuzzleFrame.gameObject.SetActive(true);
+
+            StartCoroutine(m_PuzzleCreationTransitionController.CreatePuzzleScene(puzzleIndex,textureProvider, puzzleSize));
         }
     }
 }

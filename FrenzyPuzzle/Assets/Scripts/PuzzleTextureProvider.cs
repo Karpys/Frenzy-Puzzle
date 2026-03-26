@@ -1,6 +1,7 @@
 namespace PuzzleFrenzy.Scripts
 {
     using System;
+    using System.Threading.Tasks;
     using UnityEngine;
 
     public class PuzzleTextureProvider : ITextureProvider
@@ -8,6 +9,8 @@ namespace PuzzleFrenzy.Scripts
         private Sprite m_Sprite = null;
         public Texture Texture => m_Sprite.texture;
         public bool IsAsync => false;
+        public bool IsCompleted => true;
+
         public void GetTexture(Action<Texture> result)
         {
             result?.Invoke(Texture);
