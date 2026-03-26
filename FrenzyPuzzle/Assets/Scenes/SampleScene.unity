@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.GlobalVariableSetter
   m_PuzzlePiecePlaceSpeed: 4
   m_PuzzlePiecePlaceEase: 5
-  m_ButtonScaleDownDuration: 1
+  m_ButtonScaleDownDuration: 0.75
   m_ButtonScaleDownEase: 13
 --- !u!1001 &487494686
 PrefabInstance:
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2364,13 +2364,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1487617911}
+  - component: {fileID: 1487617912}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1487617911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2385,8 +2386,8 @@ RectTransform:
   m_Children:
   - {fileID: 653727129}
   - {fileID: 66655831}
-  - {fileID: 316051210}
   - {fileID: 289848087}
+  - {fileID: 316051210}
   - {fileID: 1508787018}
   - {fileID: 1506511682}
   m_Father: {fileID: 1428318341}
@@ -2396,6 +2397,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1487617912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487617910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c0b762acf14406a9dbc6295a5b1e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.Loading
+  m_Images: []
+  m_Holder: {fileID: 1487617911}
+  m_OutPlaces:
+  - {fileID: 838025848}
+  - {fileID: 605625726}
+  - {fileID: 363806050}
+  - {fileID: 694695688}
+  m_InPlaces:
+  - {fileID: 85304943}
+  - {fileID: 541451970}
+  - {fileID: 161960362}
+  - {fileID: 595746669}
+  m_Holders:
+  - {fileID: 653727129}
+  - {fileID: 66655831}
+  - {fileID: 289848087}
+  - {fileID: 316051210}
+  m_RotateDuration: 0.35
+  m_RotateEase: 2
+  m_InitialOutDelay: 0
+  m_OutDuration: 0.5
+  m_AdditionalOutDelay: 0.1
+  m_OutEase: 8
+  m_InitialInDelay: 0
+  m_InDuration: 0.5
+  m_AdditionalInDelay: 0.1
+  m_InEase: 13
 --- !u!1 &1506511681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2461,7 @@ RectTransform:
   m_GameObject: {fileID: 1506511681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.35, y: 1.35, z: 1.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 838025848}
