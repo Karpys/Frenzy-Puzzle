@@ -27,8 +27,15 @@
         [SerializeField] private float m_AdditionalInDelay = 0.1f;
         [SerializeField] private Ease m_InEase = Ease.LINEAR;
 
-        private void LaunchLoading()
+        private bool m_InStop = false;
+        private bool m_HasStopLoading = false;
+
+        public bool HasStopLoading => m_HasStopLoading;
+
+        public void LaunchLoading()
         {
+            m_InStop = false;
+            m_HasStopLoading = false;
             Init();
             MoveOut(0);
 
@@ -40,13 +47,20 @@
             }
         }
 
+        public void Stop()
+        {
+            m_InStop = true;
+        }
+        
         private void StopLoading()
         {
+            m_HasStopLoading = true;
             transform.DoKill();
 
-            foreach (Transform holder in m_Holders)
+            foreach (var image in m_Images)
             {
-                holder.DoKill();
+                image.color = Color.white.setAlpha(1);
+                image.DoColor(Color.white.setAlpha(0), 0.25f);
             }
         }
 
@@ -85,7 +99,17 @@
                 if (i == m_Holders.Length - 1)
                 {
                     m_Holders[i].transform.DoMove(m_InPlaces[i].transform.position, m_InDuration).SetEase(m_InEase)
-                        .SetDelay(delay).OnComplete(() => MoveOut(m_InitialOutDelay));
+                        .SetDelay(delay).OnComplete(() =>
+                        {
+                            if (m_InStop)
+                            {
+                                StopLoading();   
+                            }
+                            else
+                            {
+                                MoveOut(m_InitialOutDelay);
+                            }
+                        });
                 }
                 else
                 {

@@ -2,12 +2,14 @@
 {
     using System;
     using System.Collections;
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
     using UnityEngine.Networking;
     using Random = UnityEngine.Random;
 
     public class PuzzleCreator : MonoBehaviour
     {
+        [SerializeField] private Loading m_Loading = null;
         [SerializeField] private PuzzleController m_PuzzleController = null;
         [SerializeField] private string m_Url = String.Empty;
         [SerializeField] private Vector2Int m_PuzzleSize = Vector2Int.zero;
@@ -39,6 +41,7 @@
         {
             m_PuzzleSize = puzzleSize;
             CreatePuzzleAsync(textureProvider,CreatePuzzle);
+            m_Loading.LaunchLoading();
         }
 
         private void CreatePuzzleAsync(ITextureProvider textureProvider, Action<Texture> Result)
@@ -46,10 +49,24 @@
             textureProvider.GetTexture(Result);
         }
         
-        private void CreatePuzzle(Texture puzzleSprite)
+        private void CreatePuzzle(Texture puzzleTexture)
         {
+            StartCoroutine(CO_CreatePuzzle(puzzleTexture));
+        }
+
+        private IEnumerator CO_CreatePuzzle(Texture puzzleTexture)
+        {
+            m_Loading.Stop();
+
+            while (!m_Loading.HasStopLoading)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.5f);
+            
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
-            CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData,puzzleSprite);
+            CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData,puzzleTexture);
             CreateAndAssignHolders();
             puzzleFrameResizer.Resize(m_BaseSize,m_PuzzleSize);
         }
@@ -105,6 +122,17 @@
             }
 
             AssignPiece(pieces);
+
+            float timeAppear = 1f;
+            float delay = 0f;
+            float additionalDelay = timeAppear / pieces.Length;
+            
+            for (int i = 0; i < pieces.Length; i++)
+            {
+                pieces[i].transform.localScale = Vector3.zero;
+                pieces[i].transform.DoScale(Vector3.one, 0.25f).SetDelay(delay);
+                delay += additionalDelay;
+            }
         }
 
         private void AssignPiece(PuzzlePiece[] pieces)

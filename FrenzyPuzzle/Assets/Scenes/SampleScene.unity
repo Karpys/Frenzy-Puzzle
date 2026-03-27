@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -972,6 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e89cff486604652a9f1d44ad6c98a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleCreator
+  m_Loading: {fileID: 1487617912}
   m_PuzzleController: {fileID: 379565908}
   m_Url: https://media.licdn.com/dms/image/v2/D4E03AQG3LTF1v-CvzA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700045112530?e=1773878400&v=beta&t=g_khhQHsJARAVrGwzdDZ1Y08AkE0BFxGe24qAZw02bo
   m_PuzzleSize: {x: 6, y: 6}
@@ -1637,7 +1638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1853,7 +1854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2409,7 +2410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c0b762acf14406a9dbc6295a5b1e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.Loading
-  m_Images: []
+  m_Images:
+  - {fileID: 817407871}
+  - {fileID: 658741157}
+  - {fileID: 108423884}
+  - {fileID: 377415082}
   m_Holder: {fileID: 1487617911}
   m_OutPlaces:
   - {fileID: 838025848}

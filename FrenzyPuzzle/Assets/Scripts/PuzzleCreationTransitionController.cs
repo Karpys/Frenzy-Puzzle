@@ -25,10 +25,10 @@
             }
             
             yield return new WaitForSeconds(2f);
-            m_PuzzleCreator.Create(textureProvider, puzzleSize);
             m_PuzzleFrame.gameObject.SetActive(true);
             m_FrameRenderer.color = Color.white.setAlpha(0);
             m_FrameRenderer.DoColor(Color.white, 0.5f);
+            m_PuzzleCreator.Create(textureProvider, puzzleSize);
         } 
     }
 }

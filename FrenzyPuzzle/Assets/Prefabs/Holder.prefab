@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828409476264993201}
   - component: {fileID: 6962260783692821103}
+  - component: {fileID: 8041860029232766593}
   m_Layer: 0
   m_Name: Holder
   m_TagString: Untagged
@@ -158,3 +159,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzlePieceHolder
   m_Position: {x: 0, y: 0}
   m_PuzzlePiece: {fileID: 0}
+--- !u!114 &8041860029232766593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197749604383168084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de2ea63d886468ebd7ce5ad1ce44ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KarpysUtilsAsmdef::KarpysDev.KarpysUtils.TweenCustom.AutoScaleTweener
+  m_Timing: 0
+  m_Target: {fileID: 828409476264993201}
+  m_EndValue: {x: 1, y: 1, z: 1}
+  m_Duration: 0.25
+  m_Ease: 1
+  m_SetStartValue: 1
+  m_StartValue: {x: 0, y: 0, z: 0}
