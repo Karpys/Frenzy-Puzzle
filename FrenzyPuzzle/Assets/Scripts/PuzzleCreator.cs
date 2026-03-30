@@ -24,9 +24,7 @@
         [Header("Places")]
         [SerializeField] private float m_BaseSize = 4;
         [SerializeField] private Transform m_PiecesHolder = null;
-        [SerializeField] private Transform m_MinBound = null;
-        [SerializeField] private Transform m_MaxBound = null;
-
+        [SerializeField] private Bound[] m_Bounds = null;
         private PuzzleGenerator m_PuzzleGenerator = null;
 
         private IEnumerator Load()
@@ -130,9 +128,22 @@
             for (int i = 0; i < pieces.Length; i++)
             {
                 pieces[i].transform.localScale = Vector3.zero;
-                pieces[i].transform.DoScale(Vector3.one, 0.25f).SetDelay(delay);
+
+                if (i == pieces.Length - 1)
+                {
+                    pieces[i].transform.DoScale(Vector3.one, 0.25f).SetDelay(delay).OnComplete(OnLastPieceCreated);
+                }
+                else
+                {
+                    pieces[i].transform.DoScale(Vector3.one, 0.25f).SetDelay(delay);
+                }
                 delay += additionalDelay;
             }
+        }
+
+        private void OnLastPieceCreated()
+        {
+            m_PuzzlePieceSelector.SetSelect(true);
         }
 
         private void AssignPiece(PuzzlePiece[] pieces)
@@ -142,7 +153,8 @@
 
         private Vector3 GetBoundPosition()
         {
-            return new Vector3(Random.Range(m_MinBound.position.x,m_MaxBound.position.x), 0, Random.Range(m_MinBound.position.z,m_MaxBound.position.z));
+            Bound bound = m_Bounds[Random.Range(0, m_Bounds.Length)];
+            return bound.SelectPointInside();
         }
     }
 }

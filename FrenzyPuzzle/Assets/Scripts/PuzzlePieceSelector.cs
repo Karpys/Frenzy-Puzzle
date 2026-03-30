@@ -13,12 +13,16 @@
         [SerializeField] private Camera m_InputCamera = null;
         [SerializeField] private float m_RangeSelect = 1.0f;
 
+        public bool m_CanSelect = false;
         private Transform m_OldParent = null;
         private PuzzlePiece m_CurrentSelectedPiece = null;
         private PuzzlePiece[] m_Pieces = null;
 
         public void Update()
         {
+            if(!m_CanSelect)
+                return;
+            
             if (Input.GetMouseButtonDown(0))
             {
                 if(m_CurrentSelectedPiece == null)
@@ -27,18 +31,10 @@
             {
                 ReleasePiece();
             }
-
-            if (m_CurrentSelectedPiece != null)
-            {
-                // Vector3 inputPosition = m_InputCamera.ScreenToWorldPoint(Input.mousePosition);
-                // inputPosition.y = 2;
-                // m_CurrentSelectedPiece.transform.position = inputPosition;
-            }
         }
 
         private void ReleasePiece()
         {
-            Debug.Log("Release Piece");
             if (m_CurrentSelectedPiece)
             {
                 m_CurrentSelectedPiece.transform.DoKill();
@@ -52,6 +48,11 @@
         {
             m_CurrentSelectedPiece.transform.position = m_CurrentSelectedPiece.transform.position.SetY(0);
             m_PuzzlePiecePlacer.TryPlace(currentSelectedPiece);
+        }
+
+        public void SetSelect(bool canSelect)
+        {
+            m_CanSelect = canSelect;
         }
 
         public void SetPieces(PuzzlePiece[] pieces)
@@ -79,7 +80,7 @@
             m_CurrentSelectedPiece.transform.DoKill();
             m_OldParent = m_CurrentSelectedPiece.transform.parent;
             m_CurrentSelectedPiece.transform.parent = m_CursorFollower;
-            m_CurrentSelectedPiece.transform.DoLocalMove(new Vector3(0,-2,0), GlobalVariables.PuzzlePiecePlaceSpeed).SetEase(GlobalVariables.PuzzlePiecePlaceEase).SetMode(TweenMode.SPEED);
+            m_CurrentSelectedPiece.transform.DoLocalMove(new Vector3(0,2,0), GlobalVariables.PuzzlePiecePlaceSpeed).SetEase(GlobalVariables.PuzzlePiecePlaceEase).SetMode(TweenMode.SPEED);
         }
     }
 }
