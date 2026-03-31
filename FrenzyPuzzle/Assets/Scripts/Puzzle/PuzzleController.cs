@@ -8,6 +8,7 @@
         [SerializeField] private WinController m_WinController = null;
         
         private PuzzlePieceHolder[] m_Holders = null;
+        private PuzzlePiece[] m_Pieces = null;
 
         public void AssignHolders(PuzzlePieceHolder[] holders)
         {
@@ -37,6 +38,39 @@
             }
 
             return true;
+        }
+
+        public void SetPieces(PuzzlePiece[] pieces)
+        {
+            m_Pieces = pieces;
+        }
+
+        public void HideNoEdge()
+        {
+            if(m_Pieces == null)
+                return;
+            
+            foreach (PuzzlePiece puzzlePiece in m_Pieces)
+            {
+                if (!puzzlePiece.IsEdge)
+                {
+                    puzzlePiece.Hide();
+                }
+            }
+        }
+
+        public void DisplayNoEdge()
+        {
+            if(m_Pieces == null)
+                return;
+            
+            foreach (PuzzlePiece puzzlePiece in m_Pieces)
+            {
+                if (!puzzlePiece.IsEdge)
+                {
+                    puzzlePiece.Display();
+                }
+            }
         }
     }
 }

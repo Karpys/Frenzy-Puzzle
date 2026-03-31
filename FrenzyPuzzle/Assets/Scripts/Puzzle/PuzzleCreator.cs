@@ -115,7 +115,7 @@
                     
                     PuzzlePiece piece = Instantiate(m_PuzzlePiecePrefab, pos, Quaternion.identity, m_PiecesHolder);
                     piece.transform.localPosition = pos;
-                    piece.Initialize(new Vector2Int(x,y),size,m_PuzzleSize,puzzleGeneratorPuzzleData[x][y],puzzleSprite);
+                    piece.Initialize(new Vector2Int(x,y),size,m_PuzzleSize,puzzleGeneratorPuzzleData[x][y],puzzleSprite, x == 0 || y == 0 || x == m_PuzzleSize.x - 1 || y == m_PuzzleSize.y - 1);
                     pieces[count] = piece;
                     count++;
                 }
@@ -150,6 +150,7 @@
 
         private void AssignPiece(PuzzlePiece[] pieces)
         {
+            m_PuzzleController.SetPieces(pieces);
             m_PuzzlePieceSelector.SetPieces(pieces);
         }
 

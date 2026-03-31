@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PieceVisual
   m_ScaleParent: {fileID: 2017583204184932002}
   m_Renderer: {fileID: 6043784068585368643}
+  m_Outline: {fileID: 6857682346817351350}
   m_MeshFilter: {fileID: 4752763699496810494}
 --- !u!114 &7577991740138103485
 MonoBehaviour:

@@ -5,15 +5,18 @@ Shader "Custom/PuzzlePiece"
         [MainColor] _BaseColor("Base Color", Color) = (1, 1, 1, 1)
         [MainTexture] _BaseMap("Base Map", 2D) = "white"
         _Position("Position",Vector) = (0,0,0,0)
+        _Alpha ("Alpha Override", Float) = 1.0
         _Size("Size",Float) = 1
     }
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" }
+        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
 
         Pass
         {
+            ZWrite Off
+            Blend SrcAlpha OneMinusSrcAlpha
             HLSLPROGRAM
 
             #pragma vertex vert
@@ -39,11 +42,10 @@ Shader "Custom/PuzzlePiece"
             CBUFFER_START(UnityPerMaterial)
                 half4 _BaseColor;
                 float4 _BaseMap_ST;
+                float4 _Position;
+                float _Size;
+                float _Alpha;
             CBUFFER_END
-
-
-            float4 _Position;
-            float _Size;
             
             Varyings vert(Attributes IN)
             {
@@ -56,6 +58,7 @@ Shader "Custom/PuzzlePiece"
             half4 frag(Varyings IN) : SV_Target
             {
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
+                color.a *= _Alpha;
                 return color;
             }
             ENDHLSL

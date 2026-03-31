@@ -1,6 +1,8 @@
 ﻿namespace PuzzleFrenzy.Scripts.Puzzle
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Helpers;
     using KarpysDev.KarpysUtils;
     using KarpysDev.KarpysUtils.TweenCustom;
@@ -14,7 +16,7 @@
         [SerializeField] private Camera m_InputCamera = null;
         [SerializeField] private float m_RangeSelect = 1.0f;
 
-        public bool m_CanSelect = false;
+        private bool m_CanSelect = false;
         private Transform m_OldParent = null;
         private PuzzlePiece m_CurrentSelectedPiece = null;
         private PuzzlePiece[] m_Pieces = null;
@@ -69,15 +71,17 @@
             Vector3 inputPosition = m_InputCamera.ScreenToWorldPoint(Input.mousePosition);
             inputPosition.y = 0;
 
-            int closest = m_Pieces.GetClosestViaId(inputPosition,out float distance);
+            PuzzlePiece[] selectablePieces = m_Pieces.Where(p => p.CanBeSelected).ToArray();
+
+            int closest = selectablePieces.GetClosestViaId(inputPosition,out float distance);
 
             if (distance <= m_RangeSelect)
-                SelectPiece(closest);
+                SelectPiece(closest,selectablePieces);
         }
 
-        private void SelectPiece(int id)
+        private void SelectPiece(int id,PuzzlePiece[] selectablePieces)
         {
-            m_CurrentSelectedPiece = m_Pieces[id];
+            m_CurrentSelectedPiece = selectablePieces[id];
             m_CurrentSelectedPiece.transform.DoKill();
             m_OldParent = m_CurrentSelectedPiece.transform.parent;
             m_CurrentSelectedPiece.transform.parent = m_CursorFollower;

@@ -1,12 +1,14 @@
 ﻿namespace PuzzleFrenzy.Scripts.Puzzle
 {
     using KarpysDev.KarpysUtils;
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
 
     public class PieceVisual : MonoBehaviour
     {
         [SerializeField] private Transform m_ScaleParent = null;
         [SerializeField] private MeshRenderer m_Renderer = null;
+        [SerializeField] private MeshRenderer m_Outline = null;
         [SerializeField] private MeshFilter m_MeshFilter = null;
         public Mesh Mesh => m_MeshFilter.mesh;
 
@@ -32,6 +34,18 @@
             m_ScaleParent.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
             
             m_Renderer.material.SetTexture("_BaseMap",puzzleTexture);
+        }
+
+        public void Hide()
+        {
+            m_Outline.material.DoShaderValue("_Alpha", 1, 0, 0.25f);
+            m_Renderer.material.DoShaderValue("_Alpha", 1, 0, 0.25f);
+        }
+
+        public void Display()
+        {
+            m_Outline.material.DoShaderValue("_Alpha", 0, 1, 0.25f);
+            m_Renderer.material.DoShaderValue("_Alpha", 0, 1, 0.25f);
         }
     }
 }

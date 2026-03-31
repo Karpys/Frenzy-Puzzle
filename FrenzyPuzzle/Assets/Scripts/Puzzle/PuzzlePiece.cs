@@ -16,6 +16,8 @@
         [SerializeField] private MeshFilter m_OutlineMeshFilter = null;
         [SerializeField] private BaseDeform m_Outline = null;
 
+        private bool m_CanBeSelected = true;
+        private bool m_IsEdge = false;
         private Vector2Int m_PuzzleFramePlace = Vector2Int.zero;
         private Vector2Int m_CurrentPlace = Vector2Int.zero;
         private Vector3 m_DefaultPosition = Vector3.zero;
@@ -24,9 +26,11 @@
         public Vector3 Position => transform.position;
         public PuzzlePieceHolder Holder => m_PuzzlePieceHolder;
         public Vector2Int TargetPosition => m_PuzzleFramePlace;
+        public bool IsEdge => m_IsEdge;
+        public bool CanBeSelected => m_CanBeSelected;
 
         public void Initialize(Vector2Int framePlace, float scaleSize, Vector2Int size, int[] deformData,
-            Texture puzzleTexture)
+            Texture puzzleTexture, bool isEdge)
         {
             m_PuzzleFramePlace = framePlace;
             name = framePlace.ToString();
@@ -34,6 +38,7 @@
             m_Outline.ApplyDeform(deformData,m_OutlineMeshFilter.mesh);
             m_Visual.SetUp(framePlace,size,scaleSize,puzzleTexture);
             m_DefaultPosition = transform.position;
+            m_IsEdge = isEdge;
         }
 
         public void Place(PuzzlePieceHolder holder, Vector2Int holderPlace)
@@ -54,6 +59,19 @@
                 m_PuzzlePieceHolder.Clear();
                 m_PuzzlePieceHolder = null;
             }
+        }
+
+        
+        public void Display()
+        {
+            m_Visual.Display();
+            m_CanBeSelected = true;
+        }
+        
+        public void Hide()
+        {
+            m_Visual.Hide();
+            m_CanBeSelected = false;
         }
     }
 }
