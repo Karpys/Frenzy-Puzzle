@@ -1,10 +1,12 @@
 ﻿namespace PuzzleFrenzy.Scripts.Puzzle
 {
     using KarpysDev.KarpysUtils.TweenCustom;
+    using UI;
     using UnityEngine;
 
     public class PuzzleController : MonoBehaviour
     {
+        [SerializeField] private UIWorldController m_UIWorldController = null;
         [SerializeField] private PuzzlePieceSelector m_Selector = null;
         [SerializeField] private WinController m_WinController = null;
         [SerializeField] private MeshRenderer m_PuzzleRenderer = null;
@@ -33,6 +35,7 @@
         {
             if (CheckIsValid())
             {
+                m_UIWorldController.Hide();
                 m_Selector.SetSelect(false);
                 StartCoroutine(m_WinController.TriggerWin());
             }

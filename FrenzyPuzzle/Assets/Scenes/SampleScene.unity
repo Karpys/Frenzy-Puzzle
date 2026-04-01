@@ -656,6 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168226074}
+  - component: {fileID: 168226075}
   m_Layer: 0
   m_Name: ==UI World==
   m_TagString: Untagged
@@ -679,6 +680,26 @@ Transform:
   - {fileID: 1035417477}
   m_Father: {fileID: 1343559452}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &168226075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168226073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bee0def235d43388dad920887132548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.UI.UIWorldController
+  m_ButtonsTransforms:
+  - {fileID: 1450328566}
+  - {fileID: 1092534674}
+  m_Buttons:
+  - {fileID: 1976775011}
+  - {fileID: 890868284}
+  m_DisplayEase: 1
+  m_HideEase: 2
 --- !u!1 &289848086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1348,7 @@ MonoBehaviour:
   m_InBound: 1
   m_PuzzlePieceSelector: {fileID: 362599990}
   m_PuzzlePieceHolderController: {fileID: 379565905}
+  m_UIWorldController: {fileID: 168226075}
   m_BaseSize: 6
   m_PiecesHolder: {fileID: 2013416676}
   m_Bounds:
@@ -1401,6 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2108a20043241e3bbb41845fdc494b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleFrenzy.Scripts.PuzzleController
+  m_UIWorldController: {fileID: 168226075}
   m_Selector: {fileID: 362599990}
   m_WinController: {fileID: 1624682097}
   m_PuzzleRenderer: {fileID: 896481932}
@@ -3098,8 +3121,8 @@ RectTransform:
   m_GameObject: {fileID: 1092534673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 890868280}
   m_Father: {fileID: 1053364669}
@@ -8431,8 +8454,8 @@ RectTransform:
   m_GameObject: {fileID: 1450328565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1976775007}
   m_Father: {fileID: 1053364669}

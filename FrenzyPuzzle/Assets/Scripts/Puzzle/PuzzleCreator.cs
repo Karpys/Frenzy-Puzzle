@@ -4,6 +4,7 @@
     using System.Collections;
     using KarpysDev.KarpysUtils.TweenCustom;
     using TextureProvider;
+    using UI;
     using UnityEngine;
     using UnityEngine.Networking;
     using Utils;
@@ -22,6 +23,7 @@
         [SerializeField] private bool m_InBound = true;
         [SerializeField] private PuzzlePieceSelector m_PuzzlePieceSelector = null;
         [SerializeField] private PuzzlePieceHolderController m_PuzzlePieceHolderController = null;
+        [SerializeField] private UIWorldController m_UIWorldController = null;
 
         [Header("Places")]
         [SerializeField] private float m_BaseSize = 4;
@@ -147,6 +149,7 @@
         private void OnLastPieceCreated()
         {
             m_PuzzlePieceSelector.SetSelect(true);
+            m_UIWorldController.Display();
         }
 
         private void AssignPiece(PuzzlePiece[] pieces)
