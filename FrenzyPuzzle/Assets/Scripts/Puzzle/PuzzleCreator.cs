@@ -68,6 +68,7 @@
             m_PuzzleGenerator = new PuzzleGenerator(m_PuzzleSize);
             CreateAndAssignPieces(m_PuzzleGenerator.PuzzleData,puzzleTexture);
             CreateAndAssignHolders();
+            m_PuzzleController.SetPuzzleTexture(puzzleTexture);
             puzzleFrameResizer.Resize(m_BaseSize,m_PuzzleSize);
         }
 

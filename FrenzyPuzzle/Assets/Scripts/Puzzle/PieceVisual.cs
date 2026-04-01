@@ -38,7 +38,7 @@
 
         public void Hide()
         {
-            m_Outline.material.DoShaderValue("_Alpha", 1, 0, 0.25f);
+            m_Outline.material.DoShaderValue("_Alpha", 1, 0, 0);
             m_Renderer.material.DoShaderValue("_Alpha", 1, 0, 0.25f);
         }
 

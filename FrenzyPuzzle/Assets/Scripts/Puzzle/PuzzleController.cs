@@ -1,15 +1,24 @@
 ﻿namespace PuzzleFrenzy.Scripts.Puzzle
 {
+    using KarpysDev.KarpysUtils.TweenCustom;
     using UnityEngine;
 
     public class PuzzleController : MonoBehaviour
     {
         [SerializeField] private PuzzlePieceSelector m_Selector = null;
         [SerializeField] private WinController m_WinController = null;
+        [SerializeField] private MeshRenderer m_PuzzleRenderer = null;
         
         private PuzzlePieceHolder[] m_Holders = null;
         private PuzzlePiece[] m_Pieces = null;
 
+        public PuzzlePieceSelector Selector => m_Selector;
+
+        public void SetPuzzleTexture(Texture texture)
+        {
+            m_PuzzleRenderer.material.SetTexture("_MainTex",texture);
+        }
+        
         public void AssignHolders(PuzzlePieceHolder[] holders)
         {
             m_Holders = holders;
@@ -54,7 +63,7 @@
             {
                 if (!puzzlePiece.IsEdge)
                 {
-                    puzzlePiece.Hide();
+                    puzzlePiece.TryHide();
                 }
             }
         }
@@ -68,9 +77,40 @@
             {
                 if (!puzzlePiece.IsEdge)
                 {
-                    puzzlePiece.Display();
+                    puzzlePiece.TryDisplay();
                 }
             }
+        }
+
+        public void TryDisplayAllPiece()
+        {
+            foreach (PuzzlePiece puzzlePiece in m_Pieces)
+            {
+                puzzlePiece.TryDisplay();
+            }
+        }
+
+        public void HideAllPiece()
+        {
+            foreach (PuzzlePiece puzzlePiece in m_Pieces)
+            {
+                puzzlePiece.TryHide();
+            }
+        }
+
+        public void DisplayPuzzle()
+        {
+            m_PuzzleRenderer.material.DoShaderValue("_Alpha", 0, 1, 0.25f);
+        }
+
+        public void HidePuzzle()
+        {
+            m_PuzzleRenderer.material.DoShaderValue("_Alpha", 1, 0, 0.25f);
+        }
+
+        public void SetSelect(bool canSelect)
+        {
+            m_Selector.SetSelect(canSelect);
         }
     }
 }

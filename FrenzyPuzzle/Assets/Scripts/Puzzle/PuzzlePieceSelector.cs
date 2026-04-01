@@ -8,6 +8,7 @@
     using KarpysDev.KarpysUtils.TweenCustom;
     using Managers;
     using UnityEngine;
+    using UnityEngine.EventSystems;
 
     public class PuzzlePieceSelector : MonoBehaviour
     {
@@ -16,24 +17,37 @@
         [SerializeField] private Camera m_InputCamera = null;
         [SerializeField] private float m_RangeSelect = 1.0f;
 
+        public Action A_OnTrySelectWhileLocked = null;
+        
         private bool m_CanSelect = false;
         private Transform m_OldParent = null;
         private PuzzlePiece m_CurrentSelectedPiece = null;
         private PuzzlePiece[] m_Pieces = null;
 
-        public void Update()
+        private void Update()
         {
-            if(!m_CanSelect)
-                return;
-            
             if (Input.GetMouseButtonDown(0))
             {
+                if(!CheckIfCanSelectPiece())
+                    return;
+                
                 if(m_CurrentSelectedPiece == null)
                     TrySelectPiece();
             }else if (Input.GetMouseButtonUp(0))
             {
                 ReleasePiece();
             }
+        }
+
+        private bool CheckIfCanSelectPiece()
+        {
+            if (!m_CanSelect)
+            {
+                if(!EventSystem.current.IsPointerOverGameObject())
+                    A_OnTrySelectWhileLocked?.Invoke();
+            }
+
+            return m_CanSelect;
         }
 
         private void ReleasePiece()
@@ -72,6 +86,9 @@
             inputPosition.y = 0;
 
             PuzzlePiece[] selectablePieces = m_Pieces.Where(p => p.CanBeSelected).ToArray();
+            
+            if(selectablePieces.Length == 0)
+                return;
 
             int closest = selectablePieces.GetClosestViaId(inputPosition,out float distance);
 
